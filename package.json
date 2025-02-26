@@ -1,0 +1,51 @@
+{
+  "name": "turkce-js",
+  "version": "1.1.0",
+  "description": "TDK (Türk Dil Kurumu) sözlüğünden kelime anlamlarını, köken bilgilerini ve atasözlerini getiren Node.js paketi.",
+  "main": "index.js",
+  "bin": {
+    "turkce-js": "./cli.js"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/utkuberkaykoc/turkce-js.git"
+  },
+  "keywords": [
+    "turkish",
+    "dictionary",
+    "tdk",
+    "word-definition",
+    "sozluk",
+    "turkce",
+    "vocabulary",
+    "language",
+    "word-search",
+    "lexicon",
+    "translations",
+    "open-data",
+    "meaning",
+    "cli",
+    "terminal",
+    "batch-lookup",
+    "bulk-search",
+    "text-file",
+    "word-check",
+    "automation",
+    "turkce-sozluk",
+    "turkce-kelime",
+    "turkce-lugat",
+    "api",
+    "turkish-api",
+    "language-processing",
+    "text-processing",
+    "word-lookup"
+  ],
+  "author": "Utku Berkay Koç",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
