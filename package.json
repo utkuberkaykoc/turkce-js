@@ -1,6 +1,6 @@
 {
   "name": "turkce-js",
-  "version": "1.1.0",
+  "version": "1.2.5",
   "description": "TDK (Türk Dil Kurumu) sözlüğünden kelime anlamlarını, köken bilgilerini ve atasözlerini getiren Node.js paketi.",
   "main": "index.js",
   "bin": {
@@ -41,7 +41,10 @@
     "turkish-api",
     "language-processing",
     "text-processing",
-    "word-lookup"
+    "word-lookup",
+    "free",
+    "public-api",
+    "ücretsiz"
   ],
   "author": "Utku Berkay Koç",
   "license": "MIT",

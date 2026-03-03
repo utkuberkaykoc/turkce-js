@@ -1,6 +1,7 @@
 # TDK Sözlük 📖 🇹🇷  
 
-**Türkiye Türkçesi Sözlüğü (TDK) API Wrapper** ile kelime anlamlarını, köken bilgilerini, atasözlerini ve örnek cümleleri kolayca alabilirsiniz.  
+✅ **Ücretsiz Kullanım!**
+🔍 **Türkiye Türkçesi Sözlüğü (TDK) API Wrapper** ile kelime anlamlarını, köken bilgilerini, atasözlerini ve örnek cümleleri kolayca alabilirsiniz.  
 Ayrıca, `.txt` dosyası ile **toplu kelime sorgulama** ve **CLI desteği** ile terminalden kullanım mümkündür! 🚀  
 
 ![NPM Version](https://img.shields.io/npm/v/turkce-js?color=blue&style=flat-square)  
