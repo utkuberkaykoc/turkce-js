@@ -1,104 +1,116 @@
-# TDK Sözlük 📖 🇹🇷  
+# turkce-js 🇹🇷
 
-✅ **Ücretsiz Kullanım!**
-🔍 **Türkiye Türkçesi Sözlüğü (TDK) API Wrapper** ile kelime anlamlarını, köken bilgilerini, atasözlerini ve örnek cümleleri kolayca alabilirsiniz.  
-Ayrıca, `.txt` dosyası ile **toplu kelime sorgulama** ve **CLI desteği** ile terminalden kullanım mümkündür! 🚀  
+Türk Dil Kurumu (TDK) sözlük API wrapper for Node.js — word definitions, suggestions, validation, and formatted output.
 
-![NPM Version](https://img.shields.io/npm/v/turkce-js?color=blue&style=flat-square)  
-![Downloads](https://img.shields.io/npm/dt/turkce-js?color=green&style=flat-square)  
-![License](https://img.shields.io/npm/l/turkce-js?style=flat-square)  
+## 🚀 What's New in v2.0.0
 
----
+- **`getSuggestions()`** — TDK autocomplete suggestions for partial words
+- **`getFormattedDefinition()`** — Beautiful ASCII-formatted word details
+- **`isValidWord()`** — Quick boolean word validation
+- **`validateWords()`** — Batch validate arrays of words
+- **Enhanced definitions** — Pronunciation, detailed meanings with types/examples, related words
+- **Better CLI** — New commands: `detay`, `oneri`, `kontrol`
 
-## 📦 Kurulum  
+## 📦 Installation
 
-```sh
-npm install -g turkce-js
+```bash
+npm install turkce-js
 ```
 
-📌 **Global kurulum** ile terminalde **CLI desteğini** kullanabilirsiniz!  
+## 📋 Usage
 
----
-
-## 🚀 Özellikler  
-✅ **TDK Sözlük’ten kelime anlamlarını getirir.**  
-✅ **Kelimenin kökenini, eklerini, atasözlerini ve örnek cümlelerini döndürür.**  
-✅ **CLI desteği ile terminalden hızlı kullanım sağlar.**  
-✅ **.txt dosyası ile toplu kelime kontrolü yapabilirsiniz.**  
-
----
-
-## 🔥 Kullanım  
-
-### 1️⃣ **Node.js ile Kullanım**  
+### Get Word Definition
 
 ```js
-const { getWordDefinition, batchLookup } = require("turkce-js");
+const { getWordDefinition } = require("turkce-js");
 
-async function main() {
-  const kelime = await getWordDefinition("ağaç");
-  console.log(kelime);
-}
-
-main();
+const result = await getWordDefinition("merhaba");
+console.log(result.title);       // "merhaba"
+console.log(result.pronunciation); // Pronunciation info
+console.log(result.meanings);     // Detailed meanings array
+console.log(result.relatedWords); // Related words array
 ```
 
-📌 **Çıktı Örneği:**  
-```json
-{
-  "word": "ağaç",
-  "meanings": ["Uzun ömürlü, odunsu gövdeli bitki."],
-  "origin": "Türkçe",
-  "suffix": null,
-  "proverbs": ["Ağaç yaşken eğilir."],
-  "examples": [
-    {
-      "sentence": "Bahçeye yeni bir ağaç diktik.",
-      "author": "Mehmet Akif"
-    }
-  ],
-  "relatedWords": ["ağaçkakan", "ağaç işleri"]
-}
+### Get Suggestions (Autocomplete)
+
+```js
+const { getSuggestions } = require("turkce-js");
+
+const suggestions = await getSuggestions("mer");
+// ["mera", "merak", "meraklı", "meral", "meram", "merhaba", ...]
 ```
 
----
+### Formatted Definition
 
-### 2️⃣ **CLI ile Terminalden Kullanım**  
+```js
+const { getFormattedDefinition } = require("turkce-js");
 
-📌 **Tek Kelime Arama:**  
-```sh
-turkce-js kelime bilgisayar
-```
-⏩ **Çıktı:** `"Veri işleme amacıyla kullanılan elektronik aygıt."`
-
-📌 **Toplu Kelime Kontrolü (`.txt` Dosyası ile)**  
-
-Dosya (`kelimeler.txt`):  
-```
-ağaç
-bilgisayar
-sevgi
-ışık
+const text = await getFormattedDefinition("bilgisayar");
+console.log(text);
+// ╔════════════════════════════╗
+// ║  BILGISAYAR              ║
+// ╠════════════════════════════╣
+// ║  1. [isim] ...           ║
+// ╚════════════════════════════╝
 ```
 
-Terminalde çalıştır:  
-```sh
-turkce-js dosya kelimeler.txt
+### Validate Words
+
+```js
+const { isValidWord, validateWords } = require("turkce-js");
+
+const valid = await isValidWord("kitap"); // true
+const invalid = await isValidWord("xyzabc"); // false
+
+const results = await validateWords(["kitap", "kalem", "xyzabc"]);
+// { valid: ["kitap", "kalem"], invalid: ["xyzabc"] }
 ```
 
-⏩ **Tüm kelimelerin anlamlarını içeren JSON çıktısı alırsınız.**  
+### Batch Lookup
 
----
+```js
+const { batchLookup } = require("turkce-js");
 
-## 📜 Lisans  
+const words = await batchLookup(["araba", "ev", "kitap"]);
+// Returns array of definition objects
 
-Bu proje **MIT Lisansı** ile korunmaktadır.  
+// With formatted output:
+const formatted = await batchLookup(["araba", "ev"], { formatted: true });
+```
 
----
+## 📟 CLI Usage
 
-## 🌟 Destek & İletişim  
+```bash
+# Basic definition
+npx turkce-js kelime merhaba
 
-- **GitHub Issues:** [Hata Bildir & Öneri Yap](https://github.com/utkuberkaykoc/turkce-js/issues)  
-- **⭐ Pakete yıldız ver:** Eğer hoşuna gittiyse projeye destek olabilirsin!  
+# Formatted definition
+npx turkce-js detay bilgisayar
 
-🚀 **Türkçeyi keşfetmeye hazır mısın?** 🇹🇷
+# Get suggestions
+npx turkce-js oneri mer
+
+# Validate a word
+npx turkce-js kontrol kitap
+
+# Lookup from file
+npx turkce-js dosya kelimeler.txt
+
+# Formatted file output
+npx turkce-js dosya kelimeler.txt --formatli
+```
+
+## 📡 API
+
+| Function | Description |
+|----------|-------------|
+| `getWordDefinition(word)` | Get detailed word definition from TDK |
+| `getSuggestions(partial)` | Get autocomplete suggestions |
+| `getFormattedDefinition(word)` | Get ASCII-formatted definition |
+| `isValidWord(word)` | Check if word exists (boolean) |
+| `validateWords(words[])` | Batch validate words |
+| `batchLookup(words[], options?)` | Lookup multiple words |
+
+## 📄 License
+
+MIT © Utku Berkay Koç

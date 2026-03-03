@@ -1,7 +1,7 @@
 {
   "name": "turkce-js",
-  "version": "1.2.5",
-  "description": "TDK (Türk Dil Kurumu) sözlüğünden kelime anlamlarını, köken bilgilerini ve atasözlerini getiren Node.js paketi.",
+  "version": "2.0.0",
+  "description": "TDK (Türk Dil Kurumu) sözlüğünden kelime anlamları, otomatik tamamlama, kelime doğrulama, formatlı çıktı ve toplu sorgulama sağlayan Node.js paketi.",
   "main": "index.js",
   "bin": {
     "turkce-js": "./cli.js"
